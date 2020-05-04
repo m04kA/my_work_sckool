@@ -1,0 +1,40 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	var ansver = parseInt(Math.random() * 100);
+	var attempt = 1;
+	var playerNamber = 1;
+
+	while(true)
+	{
+		var userAnsver = prompt('Ушадайте число от 0 до 100\n Ходит игрок ' + playerNamber + "\n Для выхода намите i");
+		userAnsver = userAnsver.toLowerCase();
+	 if (userAnsver == "i")
+	 	break;
+	 userAnsver = parseInt(userAnsver);
+
+	 if (userAnsver == ansver)
+	 {
+	 	alert('Поздравляю, победил игрок ' + playerNamber + '.\n Было потрачено ' + attempt + '  попыток.');
+	 	break;
+	 }
+	 else if (userAnsver < ansver)
+	 {
+	 	alert('Вы ввели меньше зашаданного числа. ');
+	 	attempt++;
+	 }
+	 else(userAnsver > ansver)
+	 {
+	 	alert('Вы ввели больше загаданного числа.');
+	 	attempt++;
+	 }
+	 if (playerNamber == 1)
+	 {
+	 	playerNamber = 2;
+	 	alert('Теперь очередь игрока '+ playerNamber+ ".");
+	 }
+	 else
+        playerNamber = 1;
+	 	alert('Теперь очередь игрока '+ playerNamber+ ".");
+	}
+	alert('Удачного дня.');
+</script>

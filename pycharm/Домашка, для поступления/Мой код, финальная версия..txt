@@ -1,0 +1,127 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+namespace Coder
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] alphabet = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' }; //Алфавит.
+
+            Console.WriteLine("Введите слово, которое хотите закодировать на английском языке:");
+            string words = Console.ReadLine(); //Строчка ввода слова.
+            #region Для тестов без участия ввода в консоль.
+            //string words = "a aab"; 
+            //Console.WriteLine(words);
+            #endregion
+
+            char[] arrayWords = words.ToLower().ToCharArray();
+
+            Console.WriteLine("Введите лозунг для кодировки:");
+            string code = Console.ReadLine(); //Строчка ввода лозунга.
+            #region Для тестов без участия ввода в консоль.
+            //string code = "123";
+            //Console.WriteLine(code);
+            #endregion
+            char[] cipher = code.ToCharArray();
+            var numbers = new List<int>();
+
+            int figure = 0;
+            string a; // Для того, чтоб нормальноположить значение в лист, не знаю, как сделать правильней.(Пробовал, не получилось) 
+            string finishWord = ""; //То, что получилось в итоге.
+
+            for (int i = 0; i < cipher.Length; i++) // Заполнение листа.
+            {
+                a = Convert.ToString(cipher[i]);
+                figure = Int32.Parse(a);
+                numbers.Add(figure);
+            }
+
+            int count = numbers.Count; // Количество элементов в листе.  
+
+
+                int m = 0; //Индекс массива arrayWords  
+                int n = 0; //Индекс массива alphabet
+                int t = 0; // Индекс лозунга.
+                int crossing = 0; // Для перехода из конца алфавита в начало. 
+                char gap = ' '; // Будет использоваться, если пробел.
+                do
+                {
+                     if(arrayWords[m] == gap)  //Проверка на пробелы
+                     {
+                        ++m;
+                        finishWord = finishWord + gap;
+                        
+                     }
+                    else
+                    {
+                        if (t > (count - 1)) // Обновление лозунга
+                        {
+                            t = 0;
+                        }
+                        else
+                        {
+
+                            if (arrayWords[m] == alphabet[n])  // Сравнение слова с алфовитом
+                            {
+                                if ((n + numbers[t]) > 25)
+                                {
+                                    crossing = (numbers[t] - 1) - (25 - n); //numbers[m] - 1 делается потому, что индексы в массиве начинаются с нуля.
+                                    finishWord = finishWord + alphabet[crossing];
+                                    ++m;
+                                    n = 0;
+                                    ++t;
+
+                                }
+                                else
+                                {
+                                    finishWord = finishWord + alphabet[n + numbers[t]];
+                                    ++m;
+                                    n = 0;
+                                    ++t;
+                                }
+                            }
+                            else
+                            {
+                                ++n;
+                            }
+                    }
+                }
+                    
+                } while (m < arrayWords.Length);
+
+            Console.WriteLine($"Результат кодировки: {finishWord}");
+            #region Для тестов нижнего блока.
+            /*int[] n = new int[] {0, 1};
+            int i = 0;          
+            do
+            {
+                if (n[i] >= 3)
+                {
+                    Console.WriteLine("Молодец!");
+                    ++i;
+                    //break;
+                }
+                else
+                {
+                    n[i]++;
+                }
+                Console.WriteLine("test");
+            } while (i < n.Length);
+
+            Console.WriteLine("test 2");*/
+
+            #endregion
+
+
+            Console.ReadKey();
+
+        }
+    }
+}
+

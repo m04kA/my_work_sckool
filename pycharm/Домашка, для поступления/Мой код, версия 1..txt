@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+namespace Coder
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] alphabet = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' }; //Алфавит.
+
+            Console.WriteLine("Введите слово, которое хотите закодировать:");
+            string words = Console.ReadLine(); //Строчка ввода слова.
+            char[] arrayWords = words.ToCharArray();
+
+            Console.WriteLine("Введите лозунг для кодировки:");
+            string code = Console.ReadLine();
+            char[] cipher = code.ToCharArray();
+            var numbers = new List<int>();
+
+            int figure = 0;
+            string a; // Для того, чтоб нормальноположить значение в лист, не знаю, как сделать правильней.(Пробовал, не получилось) 
+            string finishWord = "";
+
+            for (int i = 0; i < cipher.Length; i++) // Заполнение листа.
+            {
+                a = Convert.ToString(cipher[i]);
+                figure = Int32.Parse(a);
+                numbers.Add(figure);
+            }
+
+            int count = numbers.Count; // Количество элементов в листе.  
+
+
+                int m = 0; //Индекс массива arrayWords  
+                int n = 0; //Индекс массива alphabet
+                do
+                {
+                    if (arrayWords[m] == alphabet[n])
+                    {
+                        finishWord = finishWord + alphabet[n + numbers[m]];
+                        ++m;
+                        
+                    }
+                    else
+                    {
+                        ++n;
+                    }
+                } while (m < arrayWords.Length);
+
+            Console.WriteLine($"Результат кодировки: {finishWord}.");
+            
+            
+            /*int[] n = new int[] {0, 1};
+            int i = 0;          
+            do
+            {
+                if (n[i] >= 3)
+                {
+                    Console.WriteLine("Молодец!");
+                    ++i;
+                    //break;
+                }
+                else
+                {
+                    n[i]++;
+                }
+                Console.WriteLine("test");
+            } while (i < n.Length);
+
+            Console.WriteLine("test 2");*/
+
+            Console.ReadKey();

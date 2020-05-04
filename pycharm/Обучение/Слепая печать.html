@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	function getRandomNumber(max){
+		return Math.round(Math.random() * max);
+	}
+
+	function generateText(letters, lengths){
+		var text = "";
+		for(var i = 0; i < lengths; i++){
+			var n = getRandomNumber(letters.length - 1);
+			text = text + letters[n];
+		}
+		return text;
+	}
+
+
+
+	function Typing(entry, letters, length){
+    while(true){
+		alert(entry);
+		var text = generateText(letters, length);//["ф", "а"], 10
+		var userText = prompt(text);
+		if(userText == text){
+			alert("Всё верно!");
+			break;
+		}
+		else{
+			alert("Вы ошиблись, попробуйте ещё раз.");
+		}
+	}
+
+	}
+
+	alert("Слепая печать...");
+
+    var entry = "Положите 4 пальца левой руки - мезинец, безымянный, средний, указательный - на клавиши ф,ы, в, а. Запомните, что буква А находится под вашим указательным пальцем, а Ф - под мизинцем.\nТеперь неспеша набирайте текст. Посторайтесь не смотреть на клавиатуру."
+
+    Typing(entry,["ф", "а"], 10);
+
+    var entry = "Поставьте мизинец левой руки на букву Ф, безымянный палец — на Ы, средний — на В, указательный — на А. Мизинец правой руки на букву Ж, безымянный палец — на Д, средний — на Л, указательный — на О. Запомните расположение пальцев. Повторяйте за мной."
+	
+	Typing(entry,["в", "ы"], 10);
+
+	var entry = "Поставьте мизинец левой руки на букву Ф, безымянный палец — на Ы, средний — на В, указательный — на А. Мизинец правой руки на букву Ж, безымянный палец — на Д, средний -— на Л, указательный — на О. Запомните расположение пальцев."
+
+	Typing(entry,["о", "ж"], 10);
+
+	alert("Вы молодец, справились со всем.");
+</script>

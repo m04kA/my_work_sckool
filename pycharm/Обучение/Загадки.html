@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+function askQuestion(question, ansvers1, ansvers2, ansvers3)
+{
+ var userAnsver = prompt(question);
+ userAnsver = userAnsver.toLowerCase();
+ 
+   if (userAnsver == ansvers1)
+   {
+     alert('Ответ верныый.');
+     trueAnsver++
+     return;
+   }
+   else if (userAnsver == ansvers2)
+   {
+   	alert('Ответ верныый.');
+     trueAnsver++
+     return;
+   }
+   else
+   {
+   	 alert('Ответ не верныый');
+   }
+ 
+ 
+ 
+ 
+ 
+ }
+ 
+var trueAnsver = 0;
+
+askQuestion('Если бросить камень в воду, каким он будет?', "мокрым", "влажным");
+askQuestion('Какие 2 числа похожи, нужно только перевернуть?', "69", "96","25");
+askQuestion('Сколько будет 2х2? (поймёт только физ-мат)', "5", "4")
+
+
+alert('Правильных ответов: ' + trueAnsver + ".");
+
+</script>
